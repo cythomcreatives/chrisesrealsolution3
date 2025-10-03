@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avocado - Our Business</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+                
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 10px auto;
+        }
+        
+       
+        /* Products Section */
+        .products {
+            background-color: var(--light-color);
+        }
+        
+        .product-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .product-features {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .product-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-features li:before {
+            content: '✓';
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        /* Why Njombe Section */
+        .why-njombe {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .reason-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .reason-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .reason-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: var(--light-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .contact-info {
+            padding: 20px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .info-icon {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo"><a href="/index.html" class="logo">Crs<span>Company</span></a></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="OurBusiness.html">Our Business</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="OurTeam.html">Our Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</head>
+<body>
+    
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <div class="service-detail">
+                <div class="service-hero">
+                    <img src="img/avocado.jpeg" alt="Green Coffee Beans">
+                    <div class="service-hero-text">
+                        <h1>Avocado Farming</h1>
+                        <p>From Tanzania’s Highlands to the World – Premium Organic Avocados</p>
+                    </div>
+                </div>
+                
+                <div class="service-content">
+                    <div class="service-overview">
+                        <h2>Service Overview</h2>
+                        <p>At Chrises Real Solutions, we specialize in cultivating and exporting fresh, organic avocados from the fertile soils of Njombe, Tanzania. By combining our own farms with partnerships with small-scale farmers, we ensure both quality and volume consistency to meet the growing demands of the international market. <br/>👉 Partner with us for a reliable supply of Tanzanian avocados.</p>
+                        <p>Chrises Real Solutions is a Tanzanian agribusiness company committed to delivering premium-quality avocados to the global market. </p>
+                    </div>
+                    
+                    <div class="service-features">
+                        <div class="feature-card">
+                            <h3>Our Farms: </h3>
+                            <p>Located in Njombe, an ideal region for avocado cultivation thanks to its fertile soil, favorable climate, and sustainable farming practices.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h3>Smallholder Partnerships:</h3>
+                            <p>We work with local farmer,  providing training and market access to ensure consistent volumes and fair incomes.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h3>Global Focus: </h3>
+                            <p>We connect Tanzania’s avocado potential with buyers, distributors, and retailers worldwide.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <h2 class="section-title">Our Avocados</h2>
+            <p style="text-align: center; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                We offer premium organic avocados that are carefully handpicked, graded, and packed to meet international export standards.
+            </p>
+            
+            <div class="product-cards">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/hass-avocado2.png" alt="Hass Avocados">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hass Avocados</h3>
+                        <p>Known for their rich, nutty flavor and creamy texture. Hass avocados have a long shelf life and are perfect for export.</p>
+                        <ul class="product-features">
+                            <li>Dark, pebbled skin when ripe</li>
+                            <li>Creamy, pale green flesh</li>
+                            <li>Rich, nutty flavor</li>
+                            <li>Excellent shelf life</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/Fuerte-Avocados.png" alt="Fuerte Avocados">
+                    </div>
+                    <div class="product-info">
+                        <h3>Fuerte Avocados</h3>
+                        <p>Fuerte avocados have a smooth, thin skin and a lighter flavor profile. They are known for their buttery texture.</p>
+                        <ul class="product-features">
+                            <li>Smooth, thin green skin</li>
+                            <li>Buttery, creamy texture</li>
+                            <li>Lighter, more delicate flavor</li>
+                            <li>Medium to large size</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <h3 style="text-align: center; margin-bottom: 20px; color: var(--dark-color);">Key Features of Our Avocados</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 10px;">🏔️</div>
+                        <h4>Grown in Njombe's Highlands</h4>
+                        <p>Thriving in the fertile volcanic soils at ideal altitudes</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 10px;">🌿</div>
+                        <h4>Certified Organic</h4>
+                        <p>100% organic cultivation methods, pesticide-free</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 10px;">📦</div>
+                        <h4>Export-Ready Packaging</h4>
+                        <p>Cold chain logistics to maintain freshness</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 10px;">🔍</div>
+                        <h4>Full Traceability</h4>
+                        <p>From farm to shipment for quality assurance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Njombe Section -->
+    <section id="why-njombe">
+        <div class="container">
+            <h2 class="section-title">Why Avocados from Njombe, Tanzania?</h2>
+            <div class="why-njombe">
+                <div class="reason-card">
+                    <div class="reason-icon">🌋</div>
+                    <h3>Fertile Volcanic Soils</h3>
+                    <p>Njombe's rich volcanic soils provide the perfect nutrients for premium avocado cultivation.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">⛰️</div>
+                    <h3>Ideal Altitude</h3>
+                    <p>The highland altitude creates perfect growing conditions with optimal temperatures.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">🌱</div>
+                    <h3>Organic Farming</h3>
+                    <p>Minimal chemical inputs with sustainable farming practices for healthier produce.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">📈</div>
+                    <h3>Scalable Production</h3>
+                    <p>Expanding farmer base ensuring consistent volumes for international buyers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌳</div>
+                    <h3>Cultivation & Harvesting</h3>
+                    <p>Managing our own organic avocado plantations with sustainable practices.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👨‍🌾</div>
+                    <h3>Farmer Sourcing</h3>
+                    <p>Aggregating avocados from small-scale farmers to boost volumes.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📦</div>
+                    <h3>Processing & Packaging</h3>
+                    <p>Grading and preparing fruit for export with international standards.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚢</div>
+                    <h3>Export & Logistics</h3>
+                    <p>Seamless global shipping to meet buyer timelines and requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+  <!-- Service Detail -->
+    <div class="container">
+            <div class="service-content">
+                <div class="cta-section">
+                    <h2>Interested in Our Avocado?</h2>
+                    <p>Contact us today to discuss your requirements, request samples, or get a quotation.</p>
+                    <a href="/contact.html" class="btn btn-outline">Contact Our Team</a>
+                </div>
+            </div>
+        
+        
+        <a href="/OurBusiness.html" class="btn">&larr; Back to All Services</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Chrises Real Solutions</h3>
+                    <p> Connect with us for premium agricultural products or investment
+                        opportunities in Tanzania. Our team is ready to assist you with
+                        customized solutions.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/OurBusiness.html">Our Business</a></li>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="OurTeam.html">Our Team</a></li>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="/OurBusiness.html">Coffee Bean Export</a></li>
+                        <li><a href="/OurBusiness.html">Avocado Farming</a></li>
+                        <li><a href="/OurBusiness.html">Cocoa Bean Export</a></li>
+                        <li><a href="/OurBusiness.html">Honey Export</a></li>
+                        <li><a href="/OurBusiness.html">Estate Planning</a></li>
+                        <li><a href="/OurBusiness.html">Mining Excellence</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter to receive updates and latest news.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Chrises Real Solutions. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
